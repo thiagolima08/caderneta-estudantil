@@ -22,14 +22,10 @@
 		<!-- <class>br.edu.ifpb.pweb2.cdi.model.Mensagem</class> -->
 		<!-- Apague estes 5 comentários para deixar seu persistence.xml mais limpo. -->
 		
-		<!-- Classes de entidades (exemplo) -->
-		<!-- (apague quando for usar JPA)
-		<class>br.edu.ifpb.pweb2.cdi.IN-PROGRESS.model.MinhaEntidadeJPA</class>
-		(apague quando for usar JPA)-->
-		
-		
+		<class>br.edu.ifpb.pweb2.cdi.model.Professor</class>
+
 		<properties>
-			<property name="HIBERNATE.DIALECT" value="ORG.HIBERNATE.DIALECT.mYsql8dIALECT" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
