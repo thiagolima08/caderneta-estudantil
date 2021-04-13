@@ -1,3 +1,5 @@
+package br.edu.ifpb.pweb2.cdi.controller;
+
 import java.io.Serializable;
 import java.util.List;
 

@@ -10,7 +10,7 @@ import javax.persistence.EntityTransaction;
 @Interceptor
 @Transactional
 public class TransactionalInterceptor {
-	// @Inject
+	 @Inject
 	private EntityManager manager;
 	
 	@AroundInvoke

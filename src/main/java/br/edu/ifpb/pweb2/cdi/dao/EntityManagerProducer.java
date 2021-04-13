@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 
 public class EntityManagerProducer implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("mensagem");
+	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("caderneta");
 	
 	@Produces
 	@RequestScoped
