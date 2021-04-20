@@ -6,7 +6,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import br.edu.ifpb.pweb2.bean.GenericBean;
 import br.edu.ifpb.pweb2.cdi.model.Mensagem;
 
 @Named(value = "mensagemBean")

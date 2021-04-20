@@ -8,7 +8,7 @@
 <h:head>
 	<title>Cadastro de Alunos</title>
 	<h:outputStylesheet library="css" name="estilo.css" target="head"/>
-	<h:outputScript library="js" name="jsfprime.js" target="head"/>
+	<h:outputScript library="js" name="caderneta.js" target="head"/>
 </h:head>
 <h:body>
 
@@ -16,8 +16,6 @@
 		<i class="fa fa-user icon-space"></i>Cadastro do
 		Aluno
 	</div>
-	
-	<!-- <p><a href="consulta.xhtml">Consulta</a></p> -->
 	
 	<p:messages closable="true" errorStyle="color:red" infoStyle="color:green" layout="table"/>
 	
@@ -40,30 +38,30 @@
 					<p:outputLabel value="Faltas:" for="faltas" />
 					<p:inputNumber id="faltas" value="#{cadastroAlunoBean.aluno.faltas}" />
 				</div>
-				<div class="ui-g-3">
-					<p:outputLabel value="Nota 1:" for="nota-1" />
+				<div class="ui-g-4">
+					<p:outputLabel value="Nota 1:" for="nota1" />
 					<p:inputNumber id="nota1" value="#{cadastroAlunoBean.aluno.nota1}" />
 				</div>
-				<div class="ui-g-3">
-					<p:outputLabel value="Nota 2:" for="nota-2" />
+				<div class="ui-g-4">
+					<p:outputLabel value="Nota 2:" for="nota2" />
 					<p:inputNumber id="nota2" value="#{cadastroAlunoBean.aluno.nota2}" />
 				</div>
-				<div class="ui-g-3">
-					<p:outputLabel value="Nota 3:" for="nota-3" />
+				<div class="ui-g-4">
+					<p:outputLabel value="Nota 3:" for="nota3" />
 					<p:inputNumber id="nota3" value="#{cadastroAlunoBean.aluno.nota3}" />
 				</div>
-				<div class="ui-g-3">
+				<div class="ui-g-4">
 					<p:outputLabel value="Final:" for="final" />
 					<p:inputNumber id="final" value="#{cadastroAlunoBean.aluno.finall}" />
 				</div>
-				<div class="ui-g-3">
+				<div class="ui-g-4">
 					<p:outputLabel value="Situação:" for="situacao" />
 					<p:inputText value="#{cadastroAlunoBean.aluno.situacao}" id="situacao" />
 				</div>
 			</div>
 			<div class="ui-g ui-fluid">
 				<div class="ui-g-2">
-					<p:commandButton action="#{cadastroAlunoBean.cadastrar}" value="Salve" ajax="false"/>
+					<p:commandButton action="#{cadastroAlunoBean.cadastrar}" value="Salvar" ajax="false"/>
 				</div>
 			</div>
 		</h:form>
