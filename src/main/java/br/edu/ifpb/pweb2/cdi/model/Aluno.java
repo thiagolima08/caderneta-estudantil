@@ -4,20 +4,18 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
+import javax.persistence.*;
 
-//@Entity
+@Entity
+@Table(name = "tb_aluno")
 public class Aluno implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	
 	// ATTRIBUTES
 
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	private String nome;
@@ -32,7 +30,7 @@ public class Aluno implements Serializable {
 	
 	private BigDecimal nota3;
 	
-	private BigDecimal finall;
+	private BigDecimal nota_final;
 	
 	private Situacao situacao;
 	
@@ -59,15 +57,14 @@ public class Aluno implements Serializable {
 	public Aluno() {}
 	
 	public Aluno(String nome, Date datanascimento, Integer faltas, BigDecimal nota1, BigDecimal nota2, BigDecimal nota3,
-			BigDecimal finall, Situacao situacao) {
-		super();
+				 BigDecimal nota_final, Situacao situacao) {
 		this.nome = nome;
 		this.datanascimento = datanascimento;
 		this.faltas = faltas;
 		this.nota1 = nota1;
 		this.nota2 = nota2;
 		this.nota3 = nota3;
-		this.finall = finall;
+		this.nota_final = nota_final;
 		this.situacao = situacao;
 	}
 	
@@ -131,12 +128,12 @@ public class Aluno implements Serializable {
 		this.nota3 = nota3;
 	}
 
-	public BigDecimal getFinall() {
-		return finall;
+	public BigDecimal getNota_final() {
+		return nota_final;
 	}
 
-	public void setFinall(BigDecimal finall) {
-		this.finall = finall;
+	public void setNota_final(BigDecimal finall) {
+		this.nota_final = finall;
 	}
 	
 	public Situacao getSituacao() {
@@ -161,7 +158,7 @@ public class Aluno implements Serializable {
 	@Override
 	public String toString() {
 		return "Aluno [nome=" + nome + ", datanascimento=" + datanascimento + ", faltas=" + faltas + ", nota1=" + nota1
-				+ ", nota2=" + nota2 + ", nota3=" + nota3 + ", final=" + finall + ", situacao=" + situacao + "]";
+				+ ", nota2=" + nota2 + ", nota3=" + nota3 + ", final=" + nota_final + ", situacao=" + situacao + "]";
 	}
 
 	@Override

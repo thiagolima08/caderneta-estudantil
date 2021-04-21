@@ -11,6 +11,8 @@ import java.io.Serializable;
 @Named(value = "professorBean")
 @ViewScoped
 public class ProfessorBean implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Inject
     private ProfessorController professorController;
 
@@ -21,20 +23,16 @@ public class ProfessorBean implements Serializable {
         if (!professor.getEmail().equals("") && !professor.getPassword().equals("")) {
             professor.hashPassword();
             this.professorController.cadastrarProfessor(professor);
-            //        return "logar";
+
+            return "index?faces-redirect=true";
         }
 
         return "";
     }
 
-    public String login() {
-        if (!professor.getEmail().equals("") && !professor.getPassword().equals("")) {
-            Professor p = professorController.findByEmail(professor.getEmail());
-            boolean verified = p.verifyPassword(professor.getPassword());
-			// TODO: return home page
-        }
 
-        return "";
-    }
+	public Professor getProfessor() {
+		return this.professor;
+	}
 
 }

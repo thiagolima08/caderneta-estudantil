@@ -13,7 +13,7 @@
 <h:body>
 
 	<div class="titulo">
-		<i class="fa fa-user icon-space"></i>Cadastro do
+		<i class="fa fa-user icon-space" />Cadastro do
 		Aluno
 	</div>
 	
@@ -41,20 +41,20 @@
 					<p:inputNumber id="faltas" value="#{cadastroAlunoBean.aluno.faltas}" />
 				</div>
 				<div class="ui-g-3">
-					<p:outputLabel value="Nota 1:" for="nota-1" />
+					<p:outputLabel value="Nota 1:" for="nota1" />
 					<p:inputNumber id="nota1" value="#{cadastroAlunoBean.aluno.nota1}" />
 				</div>
 				<div class="ui-g-3">
-					<p:outputLabel value="Nota 2:" for="nota-2" />
+					<p:outputLabel value="Nota 2:" for="nota2" />
 					<p:inputNumber id="nota2" value="#{cadastroAlunoBean.aluno.nota2}" />
 				</div>
 				<div class="ui-g-3">
-					<p:outputLabel value="Nota 3:" for="nota-3" />
+					<p:outputLabel value="Nota 3:" for="nota3" />
 					<p:inputNumber id="nota3" value="#{cadastroAlunoBean.aluno.nota3}" />
 				</div>
 				<div class="ui-g-3">
 					<p:outputLabel value="Final:" for="final" />
-					<p:inputNumber id="final" value="#{cadastroAlunoBean.aluno.finall}" />
+					<p:inputNumber id="final" value="#{cadastroAlunoBean.aluno.nota_final}" />
 				</div>
 				<div class="ui-g-3">
 					<p:outputLabel value="Situação:" for="situacao" />
@@ -63,7 +63,7 @@
 			</div>
 			<div class="ui-g ui-fluid">
 				<div class="ui-g-2">
-					<p:commandButton action="#{cadastroAlunoBean.cadastrar}" value="Salve" ajax="false"/>
+					<p:commandButton action="#{cadastroAlunoBean.cadastrar}" value="Salvar" ajax="false"/>
 				</div>
 			</div>
 		</h:form>
