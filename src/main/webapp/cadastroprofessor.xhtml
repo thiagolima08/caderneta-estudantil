@@ -25,17 +25,21 @@
             <div class="ui-g ui-fluid">
                 <div class="ui-g-3">
                     <p:outputLabel value="Email:" for="email" />
-                    <p:inputText value="#{professorBean.email}" id="email"
+                    <p:inputText value="#{professorBean.professor.email}" id="email"
                                  required="true" requiredMessage="Email é obrigatório!"/>
                 </div>
                 <div class="ui-g-3">
                     <p:outputLabel value="Senha:" for="senha" />
-                    <p:password id="toggle" required="true" value="#{professorBean.password}" toggleMask="true" redisplay="true"/>
+                    <p:password id="senha" required="true" value="#{professorBean.professor.password}" toggleMask="true" redisplay="true"/>
                 </div>
             </div>
             <div class="ui-g ui-fluid">
                 <div class="ui-g-2">
                     <p:commandButton action="#{professorBean.cadastrar}" value="Salvar" ajax="false"/>
+                </div>
+
+                <div>
+                    <p>Não possui uma conta? <a href="cadastroprofessor.xhtml">Se cadastre aqui</a> </p>
                 </div>
             </div>
         </h:form>
