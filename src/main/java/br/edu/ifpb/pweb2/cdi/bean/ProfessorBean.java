@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 @Named(value = "professorBean")
 @ViewScoped
-public class ProfessorBean implements Serializable {
+public class ProfessorBean extends GenericBean implements Serializable {
     @Inject
     private ProfessorController professorController;
 
@@ -20,11 +20,17 @@ public class ProfessorBean implements Serializable {
     public String cadastrar() {
         if (!professor.getEmail().equals("") && !professor.getPassword().equals("")) {
             professor.hashPassword();
-            this.professorController.cadastrarProfessor(professor);
+            boolean cadastrado = this.professorController.cadastrarProfessor(professor);
 
-            return "index?faces-redirect=true";
+			if (cadastrado) {
+				return "index?faces-redirect=true";
+			}
+
         }
 
+		professor = new Professor();
+
+		this.addInfoMessage("Email selecionado já cadastrado");
         return "";
     }
 

@@ -14,11 +14,26 @@ public class ProfessorController implements Serializable {
     private ProfessorDAO professorDAO;
 
     @Transactional
-    public void cadastrarProfessor(Professor professor) {
-        professorDAO.insert(professor);
+    public boolean cadastrarProfessor(Professor professor) {
+		Professor professorExist = this.findByEmail(professor.getEmail());
+		if (professorExist == null) {
+			this.professorDAO.insert(professor);
+			return true;
+		}
+
+		return false;
     }
 
     public Professor findByEmail(String email) {
         return professorDAO.findByEmail(email);
+    }
+
+    public boolean login(Professor p) {
+        Professor professor = this.findByEmail(p.getEmail());
+        if (professor != null) {
+            return professor.verifyPassword(p.getPassword());
+        }
+
+        return false;
     }
 }
