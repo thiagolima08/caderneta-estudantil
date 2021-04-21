@@ -25,15 +25,14 @@ public class LoginProfessorBean extends GenericBean implements Serializable {
 
     public String login() {
         if (!professor.getEmail().equals("") && !professor.getPassword().equals("")) {
-            Professor p = professorController.findByEmail(professor.getEmail());
-            boolean verified = p.verifyPassword(professor.getPassword());
+            boolean verified = professorController.login(professor);
             if (verified) {
                 System.out.println("Logado com sucesso!");
-
                 return "home?faces-redirect=true";
             }
         }
 
+		this.addErrorMessage("Email e/ou senha inválidos");
         return "";
     }
 }
