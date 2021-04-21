@@ -18,14 +18,23 @@ public class ProfessorBean implements Serializable {
     private Professor professor;
 
     public String cadastrar() {
-
-        // TODO adicionar validador na visao
         if (!professor.getEmail().equals("") && !professor.getPassword().equals("")) {
+            professor.hashPassword();
             this.professorController.cadastrarProfessor(professor);
             //        return "logar";
         }
 
-        return null;
+        return "";
+    }
+
+    public String login() {
+        if (!professor.getEmail().equals("") && !professor.getPassword().equals("")) {
+            Professor p = professorController.findByEmail(professor.getEmail());
+            boolean verified = p.verifyPassword(professor.getPassword());
+			// TODO: return home page
+        }
+
+        return "";
     }
 
 }

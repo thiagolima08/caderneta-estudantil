@@ -17,4 +17,8 @@ public class ProfessorController implements Serializable {
     public void cadastrarProfessor(Professor professor) {
         professorDAO.insert(professor);
     }
+
+    public Professor findByEmail(String email) {
+        return professorDAO.findByEmail(email);
+    }
 }
