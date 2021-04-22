@@ -46,7 +46,7 @@ private static final long serialVersionUID = 1L;
 		aluno = new Aluno();
 		
 		// Retorna para mesma página
-		return "consulta?faces-redirect=true";
+		return "home?faces-redirect=true";
 	}
 
 	public Aluno getAluno() {

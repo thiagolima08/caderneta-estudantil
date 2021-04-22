@@ -21,8 +21,9 @@
 		<!-- Exemplo (deve existir uma linha para cada classe de entidade marcada com @Entity): -->	
 		<!-- <class>br.edu.ifpb.pweb2.cdi.model.Mensagem</class> -->
 		<!-- Apague estes 5 comentários para deixar seu persistence.xml mais limpo. -->
-		
+
 		<class>br.edu.ifpb.pweb2.cdi.model.Professor</class>
+		<class>br.edu.ifpb.pweb2.cdi.model.Aluno</class>
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
