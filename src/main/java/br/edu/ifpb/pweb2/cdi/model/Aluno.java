@@ -3,6 +3,7 @@ package br.edu.ifpb.pweb2.cdi.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.*;
 
@@ -20,7 +21,8 @@ public class Aluno implements Serializable {
 
 	private String nome;
 	
-	private Date datanascimento;
+	//private Date datanascimento;
+	private LocalDate datanascimento;
 	
 	private Integer faltas;
 	
@@ -56,7 +58,8 @@ public class Aluno implements Serializable {
 	
 	public Aluno() {}
 	
-	public Aluno(String nome, Date datanascimento, Integer faltas, BigDecimal nota1, BigDecimal nota2, BigDecimal nota3,
+	//public Aluno(String nome, Date datanascimento, Integer faltas, BigDecimal nota1, BigDecimal nota2, BigDecimal nota3,
+	public Aluno(String nome, LocalDate datanascimento, Integer faltas, BigDecimal nota1, BigDecimal nota2, BigDecimal nota3,
 			BigDecimal finall, Situacao situacao) {
 		super();
 		this.nome = nome;
@@ -89,11 +92,13 @@ public class Aluno implements Serializable {
 		this.nome = nome;
 	}
 
-	public Date getDatanascimento() {
+	//public Date getDatanascimento() {
+	public LocalDate getDatanascimento() {
 		return datanascimento;
 	}
 
-	public void setDatanascimento(Date datanascimento) {
+	//public void setDatanascimento(Date datanascimento) {
+	public void setDatanascimento(LocalDate datanascimento) {
 		this.datanascimento = datanascimento;
 	}
 

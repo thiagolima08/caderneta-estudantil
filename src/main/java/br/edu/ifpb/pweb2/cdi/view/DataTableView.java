@@ -1,6 +1,6 @@
 package br.edu.ifpb.pweb2.cdi.view;
 
-import br.edu.ifpb.pweb2.cdi.bean.AlunoBean;
+import br.edu.ifpb.pweb2.cdi.controller.AlunoController;
 import br.edu.ifpb.pweb2.cdi.model.Aluno;
 import org.primefaces.PrimeFaces;
 
@@ -19,17 +19,17 @@ public class DataTableView implements Serializable {
 
     private List<Aluno> alunos;
 
-    @Inject
-    private AlunoBean alunoService;
+	@Inject
+	private AlunoController alunoController;
+
+    public void init() {
+        this.alunos = alunoController.findAll();
+        System.out.println(this.alunos);
+    }
 
 
     public List<Aluno> getAlunos() {
-        this.alunos = alunoService.getAlunos();
-        return alunos;
-    }
-
-    public void setService(AlunoBean service) {
-        this.alunoService = service;
+        return this.alunos;
     }
 
 //    public Aluno getSelectedAluno() {

@@ -31,8 +31,8 @@
 				</div>
 				<div class="ui-g-3">
 					<p:outputLabel value="Data de Nascimento:" for="data-nasc" />
-					<p:calendar required="true" requiredMessage="Data de nascimento é obrigatória"
-						 id="data-nasc" showTodayButton="true"  timeZone="GMT-3" value="#{cadastroAlunoBean.aluno.datanascimento}" showOn="button" />
+					<p:calendar required="true" pattern="dd/MM/yyyy" requiredMessage="Data de nascimento é obrigatória"
+						 id="data-nasc" showTodayButton="true" value="#{cadastroAlunoBean.aluno.datanascimento}" showOn="button" />
 				</div>
 				<div class="ui-g-3">
 					<p:outputLabel value="Faltas:" for="faltas" />
