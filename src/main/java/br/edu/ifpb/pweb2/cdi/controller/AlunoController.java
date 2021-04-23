@@ -48,21 +48,34 @@ public class AlunoController implements Serializable {
 
     @Transactional
     public void updateNotas(Aluno aluno) {
-        if (aluno.getNota1() != null && aluno.getNota2() != null && aluno.getNota3() != null
-                && aluno.getFaltas() != null) {
-            double media = (aluno.getNota1().add(aluno.getNota2()).add(aluno.getNota3())).divide(new BigDecimal(3), new MathContext(2)).doubleValue();
-            if (aluno.getFaltas() > 25) {
-                aluno.setSituacao(Aluno.Situacao.RF);
-            } else if (media > 70) {
-                aluno.setSituacao(Aluno.Situacao.AP);
-            } else if (media < 70 && media >= 40) {
-                aluno.setSituacao(Aluno.Situacao.FN);
-            } else if (media < 40) {
-                aluno.setSituacao(Aluno.Situacao.RP);
+        if (aluno.getSituacao() != Aluno.Situacao.AP) {
+            if (aluno.getNota1() != null && aluno.getNota2() != null && aluno.getNota3() != null
+                    && aluno.getFaltas() != null && aluno.getNotaFinal() == null) {
+                double media = (aluno.getNota1().add(aluno.getNota2()).add(aluno.getNota3())).divide(new BigDecimal(3), new MathContext(2)).doubleValue();
+                if (aluno.getFaltas() > 25) {
+                    aluno.setSituacao(Aluno.Situacao.RF);
+                } else if (media > 70) {
+                    aluno.setSituacao(Aluno.Situacao.AP);
+                } else if (media < 70 && media >= 40) {
+                    aluno.setSituacao(Aluno.Situacao.FN);
+                } else if (media < 40) {
+                    aluno.setSituacao(Aluno.Situacao.RP);
+                }
+                this.update(aluno);
+            } else if(aluno.getNota1() != null && aluno.getNota2() != null && aluno.getNota3() != null
+                    && aluno.getFaltas() != null && aluno.getNotaFinal() != null && aluno.getSituacao() == Aluno.Situacao.FN) {
+                BigDecimal media = (aluno.getNota1().add(aluno.getNota2()).add(aluno.getNota3())).divide(new BigDecimal(3), new MathContext(2)).multiply(new BigDecimal(60));
+                BigDecimal finalAdd = (aluno.getNotaFinal().multiply(new BigDecimal(40)));
+                double finalMedia = media.add(finalAdd).divide(new BigDecimal(100), new MathContext(2)).doubleValue();
+                if (finalMedia >= 50) {
+                    aluno.setSituacao(Aluno.Situacao.AP);
+                } else {
+                    aluno.setSituacao(Aluno.Situacao.RP);
+                }
+                this.update(aluno);
             }
         }
 
-        this.update(aluno);
     }
 
     @Transactional
