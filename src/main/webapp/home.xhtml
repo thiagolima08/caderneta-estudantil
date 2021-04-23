@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
-    <f:viewAction action="#{dtBasicView.init}" />
+    <f:viewAction action="#{alunoBean.init}" />
 </f:metadata>
 
 <h:head>
@@ -29,11 +29,11 @@
         </p:toolbar>
 
             <div class="card">
-                <p:dataTable id="aluno" var="aluno" value="#{dtBasicView.alunos}" editable="true"
+                <p:dataTable id="aluno" var="aluno" value="#{alunoBean.alunos}" editable="true"
                              style="margin-bottom:20px">
 
-                    <p:ajax event="rowEdit" listener="#{dtBasicView.onRowEdit}" update=":form:msgs"/>
-                    <p:ajax event="rowEditCancel" listener="#{dtBasicView.onRowCancel}" update=":form:msgs"/>
+                    <p:ajax event="rowEdit" listener="#{alunoBean.onRowEdit}" update=":form:msgs"/>
+                    <p:ajax event="rowEditCancel" listener="#{alunoBean.onRowCancel}" update=":form:msgs"/>
 
                     <p:column headerText="Nome">
                         <p:cellEditor>

@@ -32,9 +32,9 @@ public class Aluno implements Serializable {
 	
 	private BigDecimal nota3;
 	
-	private BigDecimal finall;
+	private BigDecimal notaFinal;
 	
-	private Situacao situacao;
+	private Situacao situacao = Situacao.MT;
 	
 	public enum Situacao  {
 		
@@ -60,7 +60,7 @@ public class Aluno implements Serializable {
 	
 	//public Aluno(String nome, Date datanascimento, Integer faltas, BigDecimal nota1, BigDecimal nota2, BigDecimal nota3,
 	public Aluno(String nome, LocalDate datanascimento, Integer faltas, BigDecimal nota1, BigDecimal nota2, BigDecimal nota3,
-			BigDecimal finall, Situacao situacao) {
+			BigDecimal notaFinal) {
 		super();
 		this.nome = nome;
 		this.datanascimento = datanascimento;
@@ -68,8 +68,7 @@ public class Aluno implements Serializable {
 		this.nota1 = nota1;
 		this.nota2 = nota2;
 		this.nota3 = nota3;
-		this.finall = finall;
-		this.situacao = situacao;
+		this.notaFinal = notaFinal;
 	}
 	
 	// GETTERS AND SETTERS
@@ -134,12 +133,12 @@ public class Aluno implements Serializable {
 		this.nota3 = nota3;
 	}
 
-	public BigDecimal getFinall() {
-		return finall;
+	public BigDecimal getNotaFinal() {
+		return notaFinal;
 	}
 
-	public void setFinall(BigDecimal finall) {
-		this.finall = finall;
+	public void setNotaFinal(BigDecimal notaFinal) {
+		this.notaFinal = notaFinal;
 	}
 	
 	public Situacao getSituacao() {
@@ -164,7 +163,7 @@ public class Aluno implements Serializable {
 	@Override
 	public String toString() {
 		return "Aluno [nome=" + nome + ", datanascimento=" + datanascimento + ", faltas=" + faltas + ", nota1=" + nota1
-				+ ", nota2=" + nota2 + ", nota3=" + nota3 + ", final=" + finall + ", situacao=" + situacao + "]";
+				+ ", nota2=" + nota2 + ", nota3=" + nota3 + ", final=" + notaFinal + ", situacao=" + situacao + "]";
 	}
 
 	@Override

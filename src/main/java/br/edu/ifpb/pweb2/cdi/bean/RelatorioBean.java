@@ -4,20 +4,17 @@ import br.edu.ifpb.pweb2.cdi.controller.AlunoController;
 import br.edu.ifpb.pweb2.cdi.model.Aluno;
 import org.primefaces.event.RowEditEvent;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.PostLoad;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-@Named(value = "alunoBean")
 @ViewScoped
-public class AlunoBean extends GenericBean implements Serializable {
+@Named("relatorioBean")
+public class RelatorioBean extends GenericBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private List<Aluno> alunos;
@@ -38,8 +35,8 @@ public class AlunoBean extends GenericBean implements Serializable {
 
     public void onRowEdit(RowEditEvent<Aluno> event) {
         Aluno aluno = event.getObject();
-        System.out.println(aluno);
-        alunoController.update(event.getObject());
+        System.out.println("Editando " + aluno.toString());
+        alunoController.updateNotas(event.getObject());
         System.out.println(event.getObject().toString());
         FacesMessage msg = new FacesMessage("Aluno Editado", String.valueOf(event.getObject().getNome()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
