@@ -24,8 +24,12 @@
                     <p:menuitem value="Lista de alunos" url="home.xhtml"/>
                     <p:menuitem value="Cadastrar Aluno" url="cadastroaluno.xhtml"/>
                     <p:menuitem value="Relatório" url="relatorio.xhtml"/>
-                    <p:menuitem value="Sair" action="#{loginProfessorBean.logout}"/>
                 </p:menuButton>
+            </f:facet>
+            <f:facet name="right">
+                <p:toolbarGroup>
+                    <p:commandButton value="Sair" action="#{loginProfessorBean.logout}" />
+                </p:toolbarGroup>
             </f:facet>
         </p:toolbar>
         <div class="card">
