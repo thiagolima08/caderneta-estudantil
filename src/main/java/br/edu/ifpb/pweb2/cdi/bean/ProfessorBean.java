@@ -19,7 +19,6 @@ public class ProfessorBean extends GenericBean implements Serializable {
 
     public String cadastrar() {
         if (!professor.getEmail().equals("") && !professor.getPassword().equals("")) {
-            professor.hashPassword();
             boolean cadastrado = this.professorController.cadastrarProfessor(professor);
 
 			if (cadastrado) {

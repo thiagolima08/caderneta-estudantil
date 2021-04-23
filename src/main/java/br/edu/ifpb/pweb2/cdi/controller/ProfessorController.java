@@ -15,6 +15,7 @@ public class ProfessorController implements Serializable {
 
     @Transactional
     public boolean cadastrarProfessor(Professor professor) {
+        professor.hashPassword();
 		Professor professorExist = this.findByEmail(professor.getEmail());
 		if (professorExist == null) {
 			this.professorDAO.insert(professor);

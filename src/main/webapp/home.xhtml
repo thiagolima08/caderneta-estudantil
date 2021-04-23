@@ -21,9 +21,9 @@
         <p:toolbar>
             <f:facet name="left">
                 <p:menuButton value="Menu">
-                    <p:menuitem value="Relatório" url="relatorio.xhtml" />
-                    <p:menuitem value="Cadastrar Aluno" url="cadastroaluno.xhtml" />
-                    <p:menuitem value="Lista de alunos" url="home.xhtml" />
+                    <p:menuitem value="Lista de alunos" url="home.xhtml"/>
+                    <p:menuitem value="Cadastrar Aluno" url="cadastroaluno.xhtml"/>
+                    <p:menuitem value="Relatório" url="relatorio.xhtml"/>
                     <p:menuitem value="Logout" action="#{loginProfessorBean.logout}" />
                 </p:menuButton>
             </f:facet>
@@ -42,7 +42,7 @@
                                 <h:outputText value="#{aluno.nome}"/>
                             </f:facet>
                             <f:facet name="input">
-                                <p:inputText value="#{aluno.nome}" style="width:100%" label="Nome"/>
+                                <p:inputText required="true" requiredMessage="Nome é obrigatorio" value="#{aluno.nome}" style="width:100%" label="Nome"/>
                             </f:facet>
                         </p:cellEditor>
                     </p:column>
@@ -54,7 +54,7 @@
                                             showTodayButton="true" value="#{aluno.datanascimento}" showOn="button" disabled="true"/>
                             </f:facet>
                             <f:facet name="input">
-                                <p:calendar required="true" pattern="dd/MM/yyyy" style="width:100%"
+                                <p:calendar  required="true" pattern="dd/MM/yyyy" style="width:100%"
                                             showTodayButton="true" value="#{aluno.datanascimento}" showOn="button"/>
                             </f:facet>
                         </p:cellEditor>
