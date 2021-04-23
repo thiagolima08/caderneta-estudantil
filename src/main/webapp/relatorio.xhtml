@@ -12,7 +12,7 @@
 </f:metadata>
 
 <h:head>
-    <title>Home</title>
+    <title>Relatório dos alunos</title>
 </h:head>
 <h:body>
     <h:form id="form">
@@ -24,6 +24,7 @@
                     <p:menuitem value="Relatório" url="relatorio.xhtml"/>
                     <p:menuitem value="Cadastrar Aluno" url="cadastroaluno.xhtml"/>
                     <p:menuitem value="Lista de alunos" url="home.xhtml"/>
+                    <p:menuitem value="Logout" action="#{loginProfessorBean.logout}" />
                 </p:menuButton>
             </f:facet>
         </p:toolbar>
@@ -49,7 +50,7 @@
                             <h:outputText value="#{aluno.nota1}"/>
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputNumber value="#{aluno.nota1}" style="width:100%" label="Nota 1"/>
+                            <p:inputNumber maxValue="100" minValue="0" value="#{aluno.nota1}" style="width:100%" label="Nota 1"/>
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
@@ -61,7 +62,7 @@
                             <h:outputText value="#{aluno.nota2}"/>
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputNumber value="#{aluno.nota2}" style="width:100%" label="Nota 2"/>
+                            <p:inputNumber maxValue="100" minValue="0" value="#{aluno.nota2}" style="width:100%" label="Nota 2"/>
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
@@ -72,7 +73,7 @@
                             <h:outputText value="#{aluno.nota3}"/>
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputNumber value="#{aluno.nota3}" style="width:100%" label="Nota 3"/>
+                            <p:inputNumber maxValue="100" minValue="0" value="#{aluno.nota3}" style="width:100%" label="Nota 3"/>
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
@@ -95,7 +96,7 @@
                             <h:outputText value="#{aluno.notaFinal}"/>
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputNumber value="#{aluno.notaFinal}" style="width:100%" label="Nota final"/>
+                            <p:inputNumber maxValue="100" minValue="0" value="#{aluno.notaFinal}" style="width:100%" label="Nota final"/>
                         </f:facet>
                     </p:cellEditor>
                 </p:column>

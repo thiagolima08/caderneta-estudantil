@@ -15,9 +15,10 @@
 		<p:toolbar>
 			<f:facet name="left">
 				<p:menuButton value="Menu">
-					<p:menuitem value="Relatório" url="home.xhtml" />
+					<p:menuitem value="Relatório" url="relatorio.xhtml" />
 					<p:menuitem value="Cadastrar Aluno" url="cadastroaluno.xhtml" />
-					<p:menuitem value="Aluno" url="alunos.xhtml" />
+					<p:menuitem value="Lista de alunos" url="home.xhtml" />
+					<p:menuitem value="Logout" action="#{loginProfessorBean.logout}" />
 				</p:menuButton>
 			</f:facet>
 		</p:toolbar>
@@ -44,26 +45,6 @@
 					<p:calendar required="true" pattern="dd/MM/yyyy" requiredMessage="Data de nascimento é obrigatória"
 						 id="data-nasc" showTodayButton="true" value="#{cadastroAlunoBean.aluno.datanascimento}" showOn="button" />
 				</div>
-<!--				<div class="ui-g-3">-->
-<!--					<p:outputLabel value="Faltas:" for="faltas" />-->
-<!--					<p:inputText id="faltas" value="#{cadastroAlunoBean.aluno.faltas}" type="number" />-->
-<!--				</div>-->
-<!--				<div class="ui-g-4">-->
-<!--					<p:outputLabel value="Nota 1:" for="nota1" />-->
-<!--					<p:inputNumber id="nota1" value="#{cadastroAlunoBean.aluno.nota1}" />-->
-<!--				</div>-->
-<!--				<div class="ui-g-4">-->
-<!--					<p:outputLabel value="Nota 2:" for="nota2" />-->
-<!--					<p:inputNumber id="nota2" value="#{cadastroAlunoBean.aluno.nota2}" />-->
-<!--				</div>-->
-<!--				<div class="ui-g-4">-->
-<!--					<p:outputLabel value="Nota 3:" for="nota3" />-->
-<!--					<p:inputNumber id="nota3" value="#{cadastroAlunoBean.aluno.nota3}" />-->
-<!--				</div>-->
-<!--				<div class="ui-g-4">-->
-<!--					<p:outputLabel value="Final:" for="final" />-->
-<!--					<p:inputNumber id="final" value="#{cadastroAlunoBean.aluno.notaFinal}" />-->
-<!--				</div>-->
 			</div>
 			<div class="ui-g ui-fluid">
 				<div class="ui-g-2">
