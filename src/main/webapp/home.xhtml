@@ -15,187 +15,55 @@
     <title>Home</title>
 </h:head>
 <h:body>
-    <h:form>
-        <p:growl id="messages" showDetail="true" />
+    <h:form id="form">
+        <p:growl id="msgs" showDetail="true" />
 
         <p:toolbar>
             <f:facet name="left">
                 <p:menuButton value="Menu">
-                    <p:menuitem value="Relatório" url="home.xhtml" />
+                    <p:menuitem value="Relatório" url="relatorio.xhtml" />
                     <p:menuitem value="Cadastrar Aluno" url="cadastroaluno.xhtml" />
-                    <p:menuitem value="Aluno" url="alunos.xhtml" />
+                    <p:menuitem value="Lista de alunos" url="home.xhtml" />
                 </p:menuButton>
             </f:facet>
         </p:toolbar>
-        <h:form>
+
             <div class="card">
-                <p:dataTable var="aluno" value="#{dtBasicView.alunos}">
-                    <p:column headerText="ID">
-                        <h:outputText value="#{aluno.id}" />
-                    </p:column>
+                <p:dataTable id="aluno" var="aluno" value="#{dtBasicView.alunos}" editable="true"
+                             style="margin-bottom:20px">
+
+                    <p:ajax event="rowEdit" listener="#{dtBasicView.onRowEdit}" update=":form:msgs"/>
+                    <p:ajax event="rowEditCancel" listener="#{dtBasicView.onRowCancel}" update=":form:msgs"/>
 
                     <p:column headerText="Nome">
-                        <h:outputText value="#{aluno.nome}" />
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <h:outputText value="#{aluno.nome}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{aluno.nome}" style="width:100%" label="Nome"/>
+                            </f:facet>
+                        </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Data de Nascimento">
-                        <h:outputText value="#{aluno.datanascimento}" />
+                    <p:column headerText="Data nascimento">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:calendar required="true" pattern="dd/MM/yyyy" style="width:100%"
+                                            showTodayButton="true" value="#{aluno.datanascimento}" showOn="button" disabled="true"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:calendar required="true" pattern="dd/MM/yyyy" style="width:100%"
+                                            showTodayButton="true" value="#{aluno.datanascimento}" showOn="button"/>
+                            </f:facet>
+                        </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Faltas">
-                        <h:outputText value="#{aluno.faltas}" />
-                    </p:column>
-
-                    <p:column headerText="Nota 1">
-                        <h:outputText value="#{aluno.nota1}" />
-                    </p:column>
-
-                    <p:column headerText="Nota 2">
-                        <h:outputText value="#{aluno.nota2}" />
-                    </p:column>
-
-                    <p:column headerText="Nota 3">
-                        <h:outputText value="#{aluno.nota3}" />
-                    </p:column>
-
-                    <p:column headerText="Final">
-                        <h:outputText value="#{aluno.finall}" />
-                    </p:column>
-
-                    <p:column headerText="Situação">
-                        <h:outputText value="#{aluno.situacao}" />
+                    <p:column style="width:6rem">
+                        <p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit" saveTitle="Save Row"/>
                     </p:column>
                 </p:dataTable>
             </div>
-        </h:form>
-<!--        <div class="card crud">-->
-
-<!--            <p:dataTable id="dt-alunos" widgetVar="dt-alunos" var="aluno" value="#{crudView.alunos}"-->
-<!--                         reflow="true" styleClass="alunos-table"-->
-<!--                         selection="#{crudView.selectedAlunos}" rowKey="#{aluno.id}" paginator="true"-->
-<!--                         rows="10" rowSelectMode="add" paginatorPosition="bottom">-->
-<!--                <f:facet name="header">-->
-<!--                    <div class="alunos-table-header">-->
-<!--                        <span style="font-weight: bold">Alunos</span>-->
-
-<!--                        <span class="filter-container ui-input-icon-left">-->
-<!--                        <i class="pi pi-search"></i>-->
-<!--                        <p:inputText id="globalFilter" onkeyup="PF('dt-alunos').filter()" placeholder="Buscar"/>-->
-<!--                    </span>-->
-
-<!--                    </div>-->
-<!--                </f:facet>-->
-
-<!--                <p:ajax event="rowSelect" update=":form:delete-alunos-button"/>-->
-<!--                <p:ajax event="rowUnselect" update=":form:delete-alunos-button"/>-->
-<!--                <p:ajax event="rowSelectCheckbox" update=":form:delete-alunos-button"/>-->
-<!--                <p:ajax event="rowUnselectCheckbox" update=":form:delete-alunos-button"/>-->
-<!--                <p:ajax event="toggleSelect" update=":form:delete-alunos-button"/>-->
-
-<!--                <p:column selectionMode="multiple" exportable="false"></p:column>-->
-
-<!--                <p:column headerText="id" sortBy="#{aluno.id}" filterBy="#{aluno.id}">-->
-<!--                    <h:outputText value="#{aluno.id}"/>-->
-<!--                </p:column>-->
-<!--                <p:column headerText="nome" sortBy="#{aluno.nome}" filterBy="#{aluno.nome}">-->
-<!--                    <h:outputText value="#{aluno.nome}"/>-->
-<!--                </p:column>-->
-<!--                <p:column headerText="faltas" sortBy="#{aluno.faltas}">-->
-<!--                    <h:outputText value="#{aluno.faltas}" style="font-weight: 700">-->
-<!--                    </h:outputText>-->
-<!--                </p:column>-->
-<!--                <p:column headerText="datanascimento" sortBy="#{aluno.datanascimento}" filterBy="#{aluno.datanascimento}">-->
-<!--                    <h:outputText value="#{aluno.datanascimento}"/>-->
-<!--                </p:column>-->
-<!--                <p:column headerText="nota1" sortBy="#{aluno.nota1}">-->
-<!--                    <h:outputText value="#{aluno.nota1}"/>-->
-<!--                </p:column>-->
-<!--                <p:column headerText="Status" sortBy="#{aluno.nota2}"-->
-<!--                          filterBy="#{aluno.nota2}">-->
-<!--                    <h:outputText value="#{aluno.nota2}"/>-->
-<!--                </p:column>-->
-<!--                <p:column headerText="Status" sortBy="#{aluno.finall}"-->
-<!--                          filterBy="#{aluno.finall}">-->
-<!--                    <h:outputText value="#{aluno.finall}"/>-->
-<!--                </p:column>-->
-<!--                <p:column headerText="Status" sortBy="#{aluno.situacao}"-->
-<!--                          filterBy="#{aluno.situacao}">-->
-<!--                    <h:outputText styleClass="aluno-badge status-#{aluno.situacao.toLowerCase()}"-->
-<!--                                  value="#{aluno.situacao}"/>-->
-<!--                </p:column>-->
-<!--                <p:column exportable="false">-->
-<!--                    <p:commandButton icon="pi pi-pencil" update=":form:manage-aluno-content"-->
-<!--                                     oncomplete="PF('manageAlunoDialog').show()"-->
-<!--                                     styleClass="edit-button rounded-button ui-button-success" process="@this">-->
-<!--                        <f:setPropertyActionListener value="#{aluno}" target="#{crudView.selectedAluno}"/>-->
-<!--                        <p:resetInput target=":form:manage-aluno-content"/>-->
-<!--                    </p:commandButton>-->
-<!--                    <p:commandButton class="ui-button-warning rounded-button" icon="pi pi-trash" process="@this"-->
-<!--                                     oncomplete="PF('deleteAlunoDialog').show()">-->
-<!--                        <f:setPropertyActionListener value="#{aluno}" target="#{crudView.selectedAluno}"/>-->
-<!--                    </p:commandButton>-->
-<!--                </p:column>-->
-
-<!--            </p:dataTable>-->
-
-<!--            <p:dialog header="Aluno Details" showEffect="fade" modal="true"-->
-<!--                      widgetVar="manageAlunoDialog" responsive="true">-->
-<!--                <p:outputPanel id="manage-aluno-content" class="ui-fluid">-->
-<!--                    <p:outputPanel rendered="#{not empty crudView.selectedAluno}">-->
-<!--                        <div class="p-field">-->
-<!--                            <p:outputLabel for="nome">Nome</p:outputLabel>-->
-<!--                            <p:inputText id="nome" value="#{crudView.selectedAluno.nome}" required="true"/>-->
-<!--                        </div>-->
-<!--                        <div class="p-field">-->
-<!--                            <p:outputLabel for="datanascimento">Data de Nascimento</p:outputLabel>-->
-<!--                            <p:calendar required="true" requiredMessage="Data de nascimento é obrigatória"-->
-<!--                                        id="data-nasc" showTodayButton="true"  timeZone="GMT-3" value="#{cadastroAlunoBean.aluno.datanascimento}" showOn="button" />-->
-<!--                        </div>-->
-<!--                        <div class="p-field">-->
-<!--                            <p:outputLabel value="Faltas:" for="faltas" />-->
-<!--                            <p:inputNumber id="faltas" value="#{cadastroAlunoBean.aluno.faltas}" />-->
-<!--                        </div>-->
-<!--                        <div class="p-field">-->
-<!--                            <p:outputLabel value="Nota 1:" for="nota1" />-->
-<!--                            <p:inputNumber id="nota1" value="#{cadastroAlunoBean.aluno.nota1}" />-->
-<!--                        </div>-->
-<!--                        <div class="p-field">-->
-<!--                            <p:outputLabel value="Nota 2:" for="nota2" />-->
-<!--                            <p:inputNumber id="nota2" value="#{cadastroAlunoBean.aluno.nota2}" />-->
-<!--                        </div>-->
-<!--                        <div class="p-field">-->
-<!--                            <p:outputLabel value="Nota 3:" for="nota3" />-->
-<!--                            <p:inputNumber id="nota3" value="#{cadastroAlunoBean.aluno.nota3}" />-->
-<!--                        </div>-->
-<!--                        <div class="p-field">-->
-<!--                            <p:outputLabel value="Final:" for="finall" />-->
-<!--                            <p:inputNumber id="finall" value="#{cadastroAlunoBean.aluno.finall}" />-->
-<!--                        </div>-->
-<!--                    </p:outputPanel>-->
-<!--                </p:outputPanel>-->
-
-<!--                <f:facet name="footer">-->
-<!--                    <p:commandButton value="Salvar" icon="pi pi-check" actionListener="#{crudView.saveAluno}"-->
-<!--                                     update="manage-aluno-content" process="manage-aluno-content @this"/>-->
-<!--                    <p:commandButton value="Cancelar" icon="pi pi-times" onclick="PF('manageAlunoDialog').hide()"-->
-<!--                                     class="ui-button-secondary"/>-->
-<!--                </f:facet>-->
-<!--            </p:dialog>-->
-
-<!--            <p:confirmDialog widgetVar="deleteAlunoDialog" showEffect="fade" width="300"-->
-<!--                             message="Deletar aluno?" header="Confirmação" severity="warn">-->
-<!--                <p:commandButton value="Sim" icon="pi pi-check" actionListener="#{crudView.deleteAluno}"-->
-<!--                                 process="@this" oncomplete="PF('deleteAlunoDialog').hide()"/>-->
-<!--                <p:commandButton value="Não" type="button" styleClass="ui-button-secondary" icon="pi pi-times"-->
-<!--                                 onclick="PF('deleteAlunoDialog').hide()"/>-->
-<!--            </p:confirmDialog>-->
-
-<!--            <p:confirmDialog global="true" showEffect="fade" width="300">-->
-<!--                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check"/>-->
-<!--                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-secondary"-->
-<!--                                 icon="pi pi-times"/>-->
-<!--            </p:confirmDialog>-->
-<!--        </div>-->
     </h:form>
 </h:body>
 </html>
