@@ -23,7 +23,7 @@
                 <p:menuButton value="Menu">
                     <p:menuitem value="Relatório" url="home.xhtml" />
                     <p:menuitem value="Cadastrar Aluno" url="cadastroaluno.xhtml" />
-                    <p:menuitem value="Aluno" url="alunos.xhtml" />
+                    <p:menuitem value="Aluno" url="cadastroaluno.xhtml" />
                 </p:menuButton>
             </f:facet>
         </p:toolbar>
@@ -41,30 +41,13 @@
                     <p:column headerText="Data de Nascimento">
                         <h:outputText value="#{aluno.datanascimento}" />
                     </p:column>
-
-                    <p:column headerText="Faltas">
-                        <h:outputText value="#{aluno.faltas}" />
+                    <p:column >
+                        <p:commandButton id="actionButton" value="Editar"
+                                         action="#{dtBasicView.editarAluno(aluno.id)}"
+                                         ajax="false">
+                        </p:commandButton>
                     </p:column>
 
-                    <p:column headerText="Nota 1">
-                        <h:outputText value="#{aluno.nota1}" />
-                    </p:column>
-
-                    <p:column headerText="Nota 2">
-                        <h:outputText value="#{aluno.nota2}" />
-                    </p:column>
-
-                    <p:column headerText="Nota 3">
-                        <h:outputText value="#{aluno.nota3}" />
-                    </p:column>
-
-                    <p:column headerText="Final">
-                        <h:outputText value="#{aluno.finall}" />
-                    </p:column>
-
-                    <p:column headerText="Situação">
-                        <h:outputText value="#{aluno.situacao}" />
-                    </p:column>
                 </p:dataTable>
             </div>
         </h:form>

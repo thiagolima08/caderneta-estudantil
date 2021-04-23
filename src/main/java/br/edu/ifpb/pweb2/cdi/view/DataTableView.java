@@ -24,12 +24,17 @@ public class DataTableView implements Serializable {
 
     public void init() {
         this.alunos = alunoController.findAll();
-        System.out.println(this.alunos);
+//        System.out.println(this.alunos);
     }
 
 
     public List<Aluno> getAlunos() {
         return this.alunos;
+    }
+
+    public String editarAluno(Integer id) {
+        System.out.println(id);
+        return "";
     }
 
 //    public Aluno getSelectedAluno() {
