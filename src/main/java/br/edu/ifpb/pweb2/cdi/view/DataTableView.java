@@ -3,6 +3,8 @@ package br.edu.ifpb.pweb2.cdi.view;
 import br.edu.ifpb.pweb2.cdi.controller.AlunoController;
 import br.edu.ifpb.pweb2.cdi.model.Aluno;
 import org.primefaces.PrimeFaces;
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -32,70 +34,17 @@ public class DataTableView implements Serializable {
         return this.alunos;
     }
 
-    public String editarAluno(Integer id) {
-        System.out.println(id);
-        return "";
+
+    public void onRowEdit(RowEditEvent<Aluno> event) {
+        alunoController.update(event.getObject());
+        System.out.println(event.getObject().toString());
+        FacesMessage msg = new FacesMessage("Aluno Editado", String.valueOf(event.getObject().getNome()));
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
-//    public Aluno getSelectedAluno() {
-//        return selectedAluno;
-//    }
-//
-//    public void setSelectedAluno(Aluno selectedAluno) {
-//        this.selectedAluno = selectedAluno;
-//    }
-//
-//    public List<Aluno> getSelectedAlunos() {
-//        return selectedAlunos;
-//    }
-//
-//    public void setSelectedAlunos(List<Aluno> selectedAlunos) {
-//        this.selectedAlunos = selectedAlunos;
-//    }
-//
-//    public void openNew() {
-//        this.selectedAluno = new Aluno();
-//    }
-//
-//    public void saveAluno() {
-//        if (this.selectedAluno.getId() == null) {
-//            this.alunos.add(this.selectedAluno);
-//            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Aluno Added"));
-//        }
-//        else {
-//            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Aluno Updated"));
-//        }
-//
-//        PrimeFaces.current().executeScript("PF('manageAlunoDialog').hide()");
-//        PrimeFaces.current().ajax().update("form:messages", "form:dt-alunos");
-//    }
-//
-//    public void deleteAluno() {
-//        this.alunos.remove(this.selectedAluno);
-//        this.selectedAluno = null;
-//        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Aluno Removed"));
-//        PrimeFaces.current().ajax().update("form:messages", "form:dt-alunos");
-//    }
-//
-//    public String getDeleteButtonMessage() {
-//        if (hasSelectedAlunos()) {
-//            int size = this.selectedAlunos.size();
-//            return size > 1 ? size + " alunos selected" : "1 aluno selected";
-//        }
-//
-//        return "Delete";
-//    }
-//
-//    public boolean hasSelectedAlunos() {
-//        return this.selectedAlunos != null && !this.selectedAlunos.isEmpty();
-//    }
-//
-//    public void deleteSelectedAlunos() {
-//        this.alunos.removeAll(this.selectedAlunos);
-//        this.selectedAlunos = null;
-//        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Alunos Removed"));
-//        PrimeFaces.current().ajax().update("form:messages", "form:dt-alunos");
-//        PrimeFaces.current().executeScript("PF('dtAlunos').clearFilters()");
-//    }
+    public void onRowCancel(RowEditEvent<Aluno> event) {
+        FacesMessage msg = new FacesMessage("Edição Cancelada", String.valueOf(event.getObject().getNome()));
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 
 }
