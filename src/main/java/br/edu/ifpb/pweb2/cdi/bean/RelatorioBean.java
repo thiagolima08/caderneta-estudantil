@@ -32,6 +32,9 @@ public class RelatorioBean extends GenericBean implements Serializable {
         return this.alunos;
     }
 
+    public boolean allowFinal(Aluno aluno) {
+        return aluno.getSituacao() != Aluno.Situacao.FN && aluno.getNotaFinal() == null;
+    }
 
     public void onRowEdit(RowEditEvent<Aluno> event) {
         Aluno aluno = event.getObject();

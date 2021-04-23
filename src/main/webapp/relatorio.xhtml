@@ -24,7 +24,7 @@
                     <p:menuitem value="Lista de alunos" url="home.xhtml"/>
                     <p:menuitem value="Cadastrar Aluno" url="cadastroaluno.xhtml"/>
                     <p:menuitem value="Relatório" url="relatorio.xhtml"/>
-                    <p:menuitem value="Logout" action="#{loginProfessorBean.logout}" />
+                    <p:menuitem value="Logout" action="#{loginProfessorBean.logout}"/>
                 </p:menuButton>
             </f:facet>
         </p:toolbar>
@@ -36,11 +36,12 @@
                 <p:ajax event="rowEditCancel" listener="#{relatorioBean.onRowCancel}" update=":form:msgs"/>
 
                 <p:column headerText="Nome">
-                    <h:outputText value="#{aluno.nome}" />
+                    <h:outputText value="#{aluno.nome}"/>
                 </p:column>
 
-                <p:column headerText="Nome">
-                    <h:outputText value="#{aluno.datanascimento}" />
+                <p:column headerText="Data de nascimento">
+                    <p:calendar required="true" pattern="dd/MM/yyyy" style="width:100%"
+                                value="#{aluno.datanascimento}" disabled="true"/>
                 </p:column>
 
 
@@ -50,7 +51,8 @@
                             <h:outputText value="#{aluno.nota1}"/>
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputNumber maxValue="100" minValue="0" value="#{aluno.nota1}" style="width:100%" label="Nota 1"/>
+                            <p:inputNumber maxValue="100" minValue="0" value="#{aluno.nota1}" style="width:100%"
+                                           label="Nota 1"/>
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
@@ -62,7 +64,8 @@
                             <h:outputText value="#{aluno.nota2}"/>
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputNumber maxValue="100" minValue="0" value="#{aluno.nota2}" style="width:100%" label="Nota 2"/>
+                            <p:inputNumber maxValue="100" minValue="0" value="#{aluno.nota2}" style="width:100%"
+                                           label="Nota 2"/>
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
@@ -73,7 +76,8 @@
                             <h:outputText value="#{aluno.nota3}"/>
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputNumber maxValue="100" minValue="0" value="#{aluno.nota3}" style="width:100%" label="Nota 3"/>
+                            <p:inputNumber maxValue="100" minValue="0" value="#{aluno.nota3}" style="width:100%"
+                                           label="Nota 3"/>
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
@@ -96,13 +100,14 @@
                             <h:outputText value="#{aluno.notaFinal}"/>
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputNumber maxValue="100" minValue="0" value="#{aluno.notaFinal}" style="width:100%" label="Nota final"/>
+                            <p:inputNumber maxValue="100" minValue="0" value="#{aluno.notaFinal}" style="width:100%"
+                                           label="Nota final" disabled="#{relatorioBean.allowFinal(aluno)}" />
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
 
                 <p:column headerText="Situação">
-                    <h:outputText value="#{aluno.situacao}" />
+                    <h:outputText value="#{aluno.situacao}"/>
                 </p:column>
 
 
